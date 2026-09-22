@@ -18,4 +18,6 @@ class SurveyRequest extends Model
     protected function casts(): array { return ['status' => EnquiryStatus::class, 'preferred_survey_date' => 'date', 'submitted_at' => 'datetime']; }
     public function service(): BelongsTo { return $this->belongsTo(Service::class); }
     public function attachments(): HasMany { return $this->hasMany(SurveyRequestAttachment::class); }
+
+    public function getRouteKeyName(): string { return 'reference'; }
 }
