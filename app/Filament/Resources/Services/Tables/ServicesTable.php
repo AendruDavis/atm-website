@@ -5,6 +5,8 @@ namespace App\Filament\Resources\Services\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ServicesTable
@@ -13,11 +15,23 @@ class ServicesTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('status')
+                    ->badge()
+                    ->sortable(),
+                IconColumn::make('is_featured')
+                    ->boolean()
+                    ->label('Featured'),
+                TextColumn::make('sort_order')
+                    ->label('Order')
+                    ->sortable(),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('sort_order')
             ->recordActions([
                 EditAction::make(),
             ])

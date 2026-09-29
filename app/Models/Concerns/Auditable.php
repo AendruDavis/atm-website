@@ -4,6 +4,7 @@ namespace App\Models\Concerns;
 
 use App\Models\AuditLog;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 
@@ -11,7 +12,13 @@ trait Auditable
 {
     public static function bootAuditable(): void
     {
-        foreach (['created', 'updated', 'deleted', 'restored'] as $event) {
+        $events = ['created', 'updated', 'deleted'];
+
+        if (in_array(SoftDeletes::class, class_uses_recursive(static::class), true)) {
+            $events[] = 'restored';
+        }
+
+        foreach ($events as $event) {
             static::$event(function (Model $model) use ($event): void {
                 if (! Auth::check() || ! Schema::hasTable('audit_logs')) {
                     return;

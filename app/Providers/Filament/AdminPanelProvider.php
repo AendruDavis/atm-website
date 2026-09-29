@@ -28,8 +28,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('ATM Consultants')
+            ->brandLogo(asset('images/atm-logo.png'))
+            ->favicon(asset('images/atm-logo.png'))
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Green,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
