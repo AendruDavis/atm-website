@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($siteSettings?->company_name ?? 'ATM Surveyors & Engineering Consultants').' | Uganda')
+@section('title', ($siteSettings?->company_name ?? 'ATTM Surveyors & Engineering Consultants').' | Uganda')
 @section('description', $siteSettings?->default_seo_description ?? 'Accurate cadastral, engineering and topographic surveys, property valuation, GIS and environmental consultancy across Uganda.')
 
 @section('content')
@@ -55,7 +55,7 @@
         </div>
         <div class='reveal flex items-center px-6 py-16 sm:px-14 lg:px-20'>
             <div class='max-w-xl'>
-                <p class='eyebrow text-yellow-400'>Why ATM</p>
+                <p class='eyebrow text-yellow-400'>Why ATTM</p>
                 <h2 class='section-title mt-5'>Precision that stands up in the real world.</h2>
                 <p class='mt-7 text-lg leading-8 text-white/75'>Good surveying is more than coordinates. It is sound judgement, careful fieldwork and a report that helps every stakeholder move forward.</p>
                 <div class='mt-10 grid gap-px bg-white/15 sm:grid-cols-3'>
