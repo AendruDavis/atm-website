@@ -1,9 +1,16 @@
 @extends('layouts.app')
-@section('title', 'Contact ATM Surveyors Uganda')
+@section('title', 'Contact '.($siteSettings?->company_name ?? 'ATM Surveyors Uganda'))
 @section('content')
 <section class='page-hero'><div class='shell relative z-10 py-16 sm:py-24'><p class='eyebrow text-yellow-400'>Contact</p><h1 class='display-title mt-6'>Let’s discuss<br>your site.</h1></div></section>
 <section class='bg-paper py-16 sm:py-24'><div class='shell grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24'>
-    <aside class='reveal'><h2 class='font-display text-3xl font-black uppercase text-green-950'>Direct contact</h2><div class='mt-7 grid gap-5 text-sm'><a class='border-t border-green-950/15 pt-4' href='tel:+256779269784'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>Call</span><strong class='mt-1 block text-lg'>+256 779 269 784</strong></a><a class='border-t border-green-950/15 pt-4' href='https://wa.me/256703063147'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>WhatsApp</span><strong class='mt-1 block text-lg'>+256 703 063 147</strong></a><div class='border-t border-green-950/15 pt-4'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>Office</span><strong class='mt-1 block text-lg'>Kampala, Uganda</strong></div></div></aside>
+    <aside class='reveal'>
+        <h2 class='font-display text-3xl font-black uppercase text-green-950'>Direct contact</h2>
+        <div class='mt-7 grid gap-5 text-sm'>
+            <a class='border-t border-green-950/15 pt-4' href='tel:{{ preg_replace('/\D+/', '', $siteSettings?->phone ?? '+256779269784') }}'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>Call</span><strong class='mt-1 block text-lg'>{{ $siteSettings?->phone ?? '+256 779 269 784' }}</strong></a>
+            <a class='border-t border-green-950/15 pt-4' href='https://wa.me/{{ preg_replace('/\D+/', '', $siteSettings?->whatsapp ?? '+256703063147') }}'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>WhatsApp</span><strong class='mt-1 block text-lg'>{{ $siteSettings?->whatsapp ?? '+256 703 063 147' }}</strong></a>
+            <div class='border-t border-green-950/15 pt-4'><span class='block text-xs font-black uppercase tracking-widest text-red-600'>Office</span><strong class='mt-1 block text-lg'>{{ $siteSettings?->office_address ?? 'Kampala, Uganda' }}</strong></div>
+        </div>
+    </aside>
     <div class='reveal'>
         @if(session('status'))<div class='mb-8 border-l-4 border-green-700 bg-green-700/10 p-5 font-bold text-green-950' role='status'>{{ session('status') }}</div>@endif
         <form method='post' action='{{ route('contact.store') }}' enctype='multipart/form-data' class='grid gap-6 sm:grid-cols-2'>@csrf

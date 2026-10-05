@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'ATM Surveyors & Engineering Consultants | Uganda')
-@section('description', 'Accurate cadastral, engineering and topographic surveys, property valuation, GIS and environmental consultancy across Uganda.')
+@section('title', ($siteSettings?->company_name ?? 'ATM Surveyors & Engineering Consultants').' | Uganda')
+@section('description', $siteSettings?->default_seo_description ?? 'Accurate cadastral, engineering and topographic surveys, property valuation, GIS and environmental consultancy across Uganda.')
 
 @section('content')
 <section class='relative min-h-[calc(100svh-7.75rem)] overflow-hidden bg-green-950 text-white'>
@@ -9,7 +9,7 @@
     <div class='absolute inset-0 bg-[linear-gradient(90deg,rgba(4,37,24,.96)_0%,rgba(4,37,24,.82)_38%,rgba(4,37,24,.15)_76%)]'></div>
     <div class='shell relative flex min-h-[calc(100svh-7.75rem)] items-end py-14 sm:items-center sm:py-20'>
         <div class='max-w-2xl'>
-            <p class='eyebrow mb-6 animate-[fade-up_.7s_ease_both] text-yellow-400'>Surveyors &amp; engineering consultants</p>
+            <p class='eyebrow mb-6 animate-[fade-up_.7s_ease_both] text-yellow-400'>{{ $siteSettings?->wordmark ?? 'Surveyors & engineering consultants' }}</p>
             <h1 class='display-title animate-[fade-up_.8s_.08s_ease_both]'>Measure with<br><span class='text-yellow-400'>confidence.</span></h1>
             <p class='mt-7 max-w-xl animate-[fade-up_.8s_.16s_ease_both] text-base leading-7 text-white/80 sm:text-lg'>Field-led expertise for land, property and infrastructure—from the first boundary point to the final professional report.</p>
             <div class='mt-9 flex animate-[fade-up_.8s_.24s_ease_both] flex-wrap gap-3'>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class='absolute bottom-0 right-0 hidden bg-yellow-400 px-8 py-5 text-green-950 lg:block'>
-        <p class='text-xs font-black uppercase tracking-[.16em]'>Serving clients across Uganda</p>
+        <p class='text-xs font-black uppercase tracking-[.16em]'>{{ $siteSettings?->areas_served ?? 'Serving clients across Uganda' }}</p>
     </div>
 </section>
 

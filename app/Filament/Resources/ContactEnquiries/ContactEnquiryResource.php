@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\ContactEnquiries;
 
-use App\Filament\Resources\ContactEnquiries\Pages\CreateContactEnquiry;
 use App\Filament\Resources\ContactEnquiries\Pages\EditContactEnquiry;
 use App\Filament\Resources\ContactEnquiries\Pages\ListContactEnquiries;
 use App\Filament\Resources\ContactEnquiries\Schemas\ContactEnquiryForm;
@@ -18,7 +17,7 @@ class ContactEnquiryResource extends Resource
 {
     protected static ?string $model = ContactEnquiry::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
     public static function form(Schema $schema): Schema
     {
@@ -30,18 +29,10 @@ class ContactEnquiryResource extends Resource
         return ContactEnquiriesTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index' => ListContactEnquiries::route('/'),
-            'create' => CreateContactEnquiry::route('/create'),
             'edit' => EditContactEnquiry::route('/{record}/edit'),
         ];
     }

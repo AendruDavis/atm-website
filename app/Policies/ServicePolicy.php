@@ -2,43 +2,4 @@
 
 namespace App\Policies;
 
-use App\Models\Service;
-use App\Models\User;
-
-class ServicePolicy
-{
-    public function viewAny(User $user): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function view(User $user, Service $service): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function create(User $user): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function update(User $user, Service $service): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function delete(User $user, Service $service): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function restore(User $user, Service $service): bool
-    {
-        return $user->canManageContent();
-    }
-
-    public function forceDelete(User $user, Service $service): bool
-    {
-        return $user->isSuperAdmin();
-    }
-}
+class ServicePolicy extends ContentPolicy {}
